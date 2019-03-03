@@ -61,6 +61,28 @@ services:
                 - user-search-delete-service
         depends_on:
             - eureka-server
+            
+            
+    database-service:
+        container_name: db-server
+        hostname: db-server
+        environment:
+            - MYSQL_ROOT_PASSWORD=mandal01
+            - MYSQL_DATABASE=WEBUSERDB
+            - SPRING_PROFILES_ACTIVE=dev
+        image: mysql:latest
+        expose:
+            - 3306  
+        ports:
+            - 3306:3306
+        networks:
+           services-network-01:
+               aliases:
+                - database-service
+        depends_on:
+            - eureka-server 
+            
+            
 networks:
   services-network-01:
     name: services-network-01
