@@ -65,12 +65,15 @@ services:
             
     database-service:
         container_name: db-server
+        build:
+           context: .
+           dockerfile: Dockerfile-Mysql-db
         hostname: db-server
         environment:
             - MYSQL_ROOT_PASSWORD=mandal01
             - MYSQL_DATABASE=WEBUSERDB
             - SPRING_PROFILES_ACTIVE=dev
-        image: mysql:latest
+        image: mysql-db:latest
         expose:
             - 3306  
         ports:
@@ -79,8 +82,6 @@ services:
            services-network-01:
                aliases:
                 - database-service
-        depends_on:
-            - eureka-server 
 
             
     zuul-api-gateway-server:

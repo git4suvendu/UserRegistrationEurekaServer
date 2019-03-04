@@ -1,0 +1,13 @@
+version: "3"
+services:
+    db-server:
+      container_name: db-server-cont
+      image: mysql
+      ports:
+       - "3306:3306"  
+      environment:
+         - MYSQL_ROOT_PASSWORD=mandal01
+         - MYSQL_DATABASE=WEBUSERDB
+
+      volumes:  
+         - /sql-scripts:/docker-entrypoint-initdb.d/:ro
