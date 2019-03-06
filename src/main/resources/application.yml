@@ -10,10 +10,10 @@ eureka:
     fetch-registry: false
     region: region1
     serviceUrl:
-      zone1: http://discovery-server:8761/eureka/
+      zone1: http://eureka-server:8761/eureka/
     availability-zones:
       region1: zone1
   instance:
-    hostname: discovery-server
+    hostname: eureka-server
     metadata-map:
       zone: zone1
