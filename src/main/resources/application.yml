@@ -4,16 +4,13 @@ spring:
 
 server:
   port: 8761
+  
 eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
-    region: region1
     serviceUrl:
-      zone1: http://eureka-server:8761/eureka/
-    availability-zones:
-      region1: zone1
+      defaultZone: http://eureka-server:8761/eureka/
   instance:
-    hostname: eureka-server
-    metadata-map:
-      zone: zone1
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${random.value}
